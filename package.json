@@ -4,7 +4,7 @@
   "main": "server/index.js",
   "scripts": {
     "lint": "standard --fix",
-    "start": "npm run lint && node ./server/index.js"
+    "start": "node ./server/index.js"
   },
   "repository": {
     "type": "git",

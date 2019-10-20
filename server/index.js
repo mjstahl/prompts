@@ -1,8 +1,8 @@
 const express = require('express')
+const initRoutes = require('./routes/')
 const app = express()
 
 const PORT = 3000
 
-app.get('/', (_, res) => res.send('Hello World'))
-
+initRoutes(app)
 app.listen(PORT, () => console.log(`Prompts started on ${PORT}.`))
