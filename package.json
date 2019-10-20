@@ -1,0 +1,24 @@
+{
+  "name": "prompts",
+  "version": "2019.10.20",
+  "main": "server/index.js",
+  "scripts": {
+    "lint": "standard --fix",
+    "start": "npm run lint && node ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjstahl/prompts.git"
+  },
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/mjstahl/prompts/issues"
+  },
+  "homepage": "https://github.com/mjstahl/prompts#readme",
+  "devDependencies": {
+    "standard": "^14.3.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
