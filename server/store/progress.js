@@ -9,7 +9,10 @@ function newProgress (listID) {
 }
 
 function updateProgress (id, variable, value) {
-  const stepCount = ProgressData[id].completed
+  const progress = ProgressData[id]
+  if (!progress) return
+
+  const stepCount = progress.completed
   ProgressData[id].completed = stepCount + 1
   if (variable) {
     ProgressData[id].input[variable] = value

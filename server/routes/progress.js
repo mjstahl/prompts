@@ -3,7 +3,8 @@ const handlebars = require('handlebars')
 const Lists = require('../store/list')
 const { data: Progress, updateProgress } = require('../store/progress')
 
-const ProgressView = require('../views/progress.js')
+const ProgressView = require('../views/progress')
+const ExportView = require('../views/export')
 
 module.exports = [{
   method: 'post',
@@ -11,13 +12,16 @@ module.exports = [{
   callback: function (req, res) {
     const progressId = req.params.id
     const progress = Progress[progressId]
-    const onStep = progress.completed
 
-    console.log(Object.entries(req.body))
+    if (!progress) res.redirect('/lists')
+
     const [variable, value] = Object.entries(req.body)[0]
     updateProgress(progressId, variable, value)
 
-    const { input, prompt } = Lists[progress.list].steps[onStep + 1]
+    const nextStep = Lists[progress.list].steps[progress.completed + 1]
+    if (!nextStep) res.send(ExportView({ progressId }))
+
+    const { input, prompt } = nextStep
     const promptTemplate = handlebars.compile(prompt)
     const step = {
       progressId,
@@ -25,5 +29,28 @@ module.exports = [{
       prompt: promptTemplate(progress.input)
     }
     return res.send(ProgressView({ step }))
+  }
+}, {
+  method: 'get',
+  path: '/progress/:id/export',
+  callback: function (req, res) {
+    const progressId = req.params.id
+    const progress = Progress[progressId]
+    const list = Lists[progress.list]
+    const keys = Object.keys(progress.input)
+    if (keys.length) {
+      const csv = [
+        keys.join(','),
+        Object.values(progress.input).join(',')
+      ].join('\n') + '\n'
+      res.writeHead(200, {
+        'Content-Type': 'application/octet-stream',
+        'Content-disposition': `attachment; filename=${list.name}.csv`
+      })
+      res.write(Buffer.from(csv))
+      res.end()
+    } else {
+      res.send()
+    }
   }
 }]
