@@ -1,4 +1,5 @@
 const routes = [
+  require('./root'),
   require('./list'),
   require('./progress')
 ]
