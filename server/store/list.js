@@ -8,7 +8,7 @@ module.exports = {
         variable: 'TotalBudget'
       }
     }, {
-      prompt: 'OK, when do you want this campaign to start?',
+      prompt: 'OK. This campaign, with a budget of {{TotalBudget}}, will start on?',
       input: {
         variable: 'CampaignStart'
       }
