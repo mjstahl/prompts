@@ -19,7 +19,7 @@ module.exports = [{
     updateProgress(progressId, variable, value)
 
     const nextStep = Lists[progress.list].steps[progress.completed + 1]
-    if (!nextStep) res.send(ExportView({ progressId }))
+    if (!nextStep) return res.send(ExportView({ progressId }))
 
     const { input, prompt } = nextStep
     const promptTemplate = handlebars.compile(prompt)
@@ -38,19 +38,18 @@ module.exports = [{
     const progress = Progress[progressId]
     const list = Lists[progress.list]
     const keys = Object.keys(progress.input)
-    if (keys.length) {
-      const csv = [
-        keys.join(','),
-        Object.values(progress.input).join(',')
-      ].join('\n') + '\n'
-      res.writeHead(200, {
-        'Content-Type': 'application/octet-stream',
-        'Content-disposition': `attachment; filename=${list.name}.csv`
-      })
-      res.write(Buffer.from(csv))
-      res.end()
-    } else {
-      res.send()
-    }
+
+    if (!keys.length) res.send()
+
+    const csv = [
+      keys.join(','),
+      Object.values(progress.input).join(',')
+    ].join('\n') + '\n'
+    res.writeHead(200, {
+      'Content-Type': 'application/octet-stream',
+      'Content-disposition': `attachment; filename=${list.name}.csv`
+    })
+    res.write(Buffer.from(csv))
+    res.end()
   }
 }]
