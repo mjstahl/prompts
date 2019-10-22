@@ -9,11 +9,11 @@ const ExportView = require('../views/export')
 module.exports = [{
   method: 'post',
   path: '/progress/:id/next',
-  callback: function (req, res) {
+  callback: function progressNext (req, res) {
     const progressId = req.params.id
     const progress = Progress[progressId]
 
-    if (!progress) res.redirect('/lists')
+    if (!progress) return res.redirect('/')
 
     const [variable, value] = Object.entries(req.body)[0]
     updateProgress(progressId, variable, value)
@@ -33,7 +33,7 @@ module.exports = [{
 }, {
   method: 'get',
   path: '/progress/:id/export',
-  callback: function (req, res) {
+  callback: function progressExport (req, res) {
     const progressId = req.params.id
     const progress = Progress[progressId]
     const list = Lists[progress.list]
@@ -50,6 +50,6 @@ module.exports = [{
       'Content-disposition': `attachment; filename=${list.name}.csv`
     })
     res.write(Buffer.from(csv))
-    res.end()
+    return res.end()
   }
 }]

@@ -1,0 +1,43 @@
+html {
+  font-family: sans-serif;
+}
+
+form, .export {
+  width: 80%;
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1, input {
+  font-size: 50px;
+}
+
+h1, .input {
+  text-align: center;
+}
+
+input {
+  border: 0;
+}
+
+input[type="text"] {
+  border-bottom: 1px solid;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+input[type="submit"], .export a {
+  color: green;
+}
+
+.export {
+  text-align: center;
+}
+.export a {
+  font-size: 80px;
+  text-decoration: none;
+}
