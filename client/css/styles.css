@@ -31,13 +31,26 @@ input[type="text"]:focus {
 }
 
 input[type="submit"], .export a {
-  color: green;
+  transform: scaleX(-1);
+}
+
+.progress-export {
+  margin-top: 50px;
+}
+
+.progress-export a {
+  font-size: 50px;
 }
 
 .export {
   text-align: center;
 }
+
 .export a {
   font-size: 80px;
+}
+
+.progress-export a, .export a {
+  color: black;
   text-decoration: none;
 }

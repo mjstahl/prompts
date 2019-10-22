@@ -8,7 +8,7 @@ module.exports = handlebars.compile(`
   </head>
   <body>
     <div class="export">
-      <h1>Click below to export results.</h1>
+      <h1>To export the results, click below.</h1>
       <a href="/progress/{{progressId}}/export">
         &DownArrowBar;
       </a>

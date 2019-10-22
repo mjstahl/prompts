@@ -12,9 +12,14 @@ module.exports = handlebars.compile(`
         <h1>{{prompt}}</h1>
         <div class="input">
           {{#if input}}
-            <input type="text" name="{{input.variable}}" alt="{{input.variable}}" />
+            <input type="text" name="{{input.variable}}" />
           {{/if}}
-          <input type="submit" value="&rdsh;" alt="Click or press 'Enter' to proceed" />
+          <input type="submit" value="&rdsh;" />
+          <div class="progress-export">
+            <a href="/progress/{{progressId}}/export">
+              &DownArrowBar;
+            </a>
+          </div>
         </div>
       </form>
     {{/with}}
