@@ -1,5 +1,10 @@
 const handlebars = require('handlebars')
 
+handlebars.registerHelper('isArray',
+  function isArrayHelper (array, context) {
+    return Array.isArray(array) ? context.fn(this) : context.inverse(this)
+  })
+
 module.exports = handlebars.compile(`
 <!DOCTYPE html>
 <html>
@@ -12,9 +17,19 @@ module.exports = handlebars.compile(`
         <h1>{{prompt}}</h1>
         <div class="input">
           {{#if input}}
-            <input type="text" name="{{input.variable}}" />
+            {{#isArray input.default}}
+              <select name="{{input.variable}}">
+                {{#each input.default}}
+                  <option value={{this}}>{{this}}</option>
+                {{/each}}
+              </select>
+            {{else}}
+              <input type="text" name="{{input.variable}}" />
+            {{/isArray}}
+            <input type="submit" value="&rdsh;" />
+          {{else}}
+            <p class="any-key-advance">Press any key to continue.</p>
           {{/if}}
-          <input type="submit" value="&rdsh;" />
           <div class="progress-export">
             <a href="/progress/{{progressId}}/export">
               &DownArrowBar;

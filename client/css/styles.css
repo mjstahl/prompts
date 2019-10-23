@@ -10,8 +10,22 @@ form, .export {
   transform: translate(-50%, -50%);
 }
 
-h1, input {
+h1 {
   font-size: 50px;
+}
+
+select {
+  width: 350px;
+  font-family: sans-serif;
+  background-color: #fff;
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 5px;
+  border: 0;
+  border-bottom: 1px solid;
+  border-radius: 0;
 }
 
 h1, .input {
@@ -24,10 +38,19 @@ input {
 
 input[type="text"] {
   border-bottom: 1px solid;
+  width: 350px;
 }
 
-input[type="text"]:focus {
+input, .input p, select {
+  font-size: 35px;
+}
+
+input[type="text"]:focus, select:focus {
   outline: none;
+}
+
+input[type="submit"] {
+  margin-left: 15px;
 }
 
 input[type="submit"], .export a {

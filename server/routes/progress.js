@@ -15,8 +15,10 @@ module.exports = [{
 
     if (!progress) return res.redirect('/')
 
-    const [variable, value] = Object.entries(req.body)[0]
-    updateProgress(progressId, variable, value)
+    if (Object.keys(req.body).length > 0) {
+      const [variable, value] = Object.entries(req.body)[0]
+      updateProgress(progressId, variable, value)
+    }
 
     const nextStep = Lists[progress.list].steps[progress.completed + 1]
     if (!nextStep) return res.send(ExportView({ progressId }))

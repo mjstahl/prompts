@@ -3,9 +3,15 @@ module.exports = {
     id: 1,
     name: 'Media Plan',
     steps: [{
+      prompt: 'Starting Media Plan Steps?',
+    }, {
       prompt: 'Great, what\'s the total budget?',
       input: {
-        variable: 'TotalBudget'
+        variable: 'TotalBudget',
+        default: [
+          'One',
+          'Two'
+        ]
       }
     }, {
       prompt: 'OK. This campaign, with a budget of {{TotalBudget}}, will start on?',
