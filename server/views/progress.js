@@ -21,7 +21,7 @@ module.exports = handlebars.compile(`
         <div class="input">
           {{#if input}}
             {{#isArray input.default}}
-              <select name="{{input.variable}}">
+              <select multiple name="{{input.variable}}">
                 {{#each input.default}}
                   <option value={{this}}>{{this}}</option>
                 {{/each}}

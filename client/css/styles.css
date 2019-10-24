@@ -36,6 +36,10 @@ select {
   border-radius: 0;
 }
 
+select[multiple] {
+  background: unset;
+}
+
 h1, .input {
   text-align: center;
 }
@@ -46,7 +50,7 @@ input {
 
 input[type="text"] {
   border-bottom: 1px solid;
-  width: 350px;
+  width: 500px;
 }
 
 input, .input p, select {

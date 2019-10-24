@@ -3,40 +3,124 @@ module.exports = {
     id: 1,
     name: 'Media Plan',
     steps: [{
-      prompt: 'Starting Media Plan Steps?',
-    }, {
-      prompt: 'Great, what\'s the total budget?',
+      prompt: 'Which client is this media plan for?',
       input: {
-        variable: 'TotalBudget',
-        default: [
-          'One',
-          'Two'
-        ]
+        variable: 'Client'
       }
     }, {
-      prompt: 'OK. This campaign, with a budget of {{TotalBudget}}, will start on?',
+      prompt: 'What is the total budget you are planning?',
+      input: {
+        variable: 'TotalBudget',
+      }
+    }, {
+      prompt: 'What is the name of this campaign?',
+      input: {
+        variable: 'CampaignName'
+      }
+    }, {
+      prompt: 'What is the start date for this campaign?',
       input: {
         variable: 'CampaignStart'
       }
     }, {
-      prompt: 'And when should the campaign run until?',
-      input: {
-        variable: 'CampaignEnd'
-      }
-    }, {
-      prompt: 'OK, what is the goal of this campaign?',
+      prompt: 'What is the overall goal of the campaign?',
       input: {
         variable: 'CampaignGoal'
       }
     }, {
-      prompt: 'Sounds good. What\'s the first channel you\'d like to plan?',
+      prompt: 'OK, let\'s start the Awareness stage planning.',
+    }, {
+      prompt: 'How much money do you want to allocate to this funnel stage?',
       input: {
-        variable: 'Channel1'
+        variable: 'Awareness_Allocation'
       }
     }, {
-      prompt: 'OK, how much of your overall budget do you want to put towards {{Channel1}}?',
+      prompt: 'What is the first channel you want to leverage in this stage?',
       input: {
-        variable: 'Channel1Allocation'
+        variable: 'Awareness_Channel1'
+      }
+    }, {
+      prompt: 'How much money do you want to allocate to "{{Awareness_Channel1}}"?',
+      input: {
+        variable: 'Awareness_Channel1_Allocation'
+      }
+    }, {
+      prompt: 'Why does this channel make good strategic sense for the Awareness phase of this campaign?',
+      input: {
+        variable: 'Awareness_Channel1_Reasons'
+      }
+    }, {
+      prompt: 'What creative assets do you want to leverage for this channel?',
+      input: {
+        variable: 'Awareness_Channel1_Assets',
+        default: [
+          'Image',
+          'Video',
+          'Carousel or Slideshow',
+          'Other'
+        ]
+      }
+    }, {
+      prompt: 'How many creative assets do you recommend for this channel?',
+      input: {
+        variable: 'Awareness_Channel1_Count'
+      }
+    }, {
+      prompt: 'Detail any A/B tests you aim to run on this channel.',
+      input: {
+        variable: 'Awareness_Channel1_Tests'
+      }
+    }, {
+      prompt: 'How will you be billed on this "{{Awareness_Channel1}}"?',
+      input: {
+        variable: 'Awareness_Channel1_Billed',
+        default: [
+          'Flat Fee',
+          'CPM',
+          'CPC',
+          'CPE',
+          'Other'
+        ]
+      }
+    }, {
+      prompt: 'What are the KPIs you intend to capture and measure for this "{{Awareness_Channel1}}"?',
+      input: {
+        variable: 'Awareness_Channel1_KPIs'
+      }
+    }, {
+      prompt: 'If there are any seasonal, holiday, or event-based considerations for this channel, please detail them here.',
+      input: {
+        variable: 'Awareness_Channel1_Events'
+      }
+    }, {
+      prompt: 'Name your first audience for this channel.',
+      input: {
+        variable: 'Awareness_Channel1_Audience1'
+      }
+    }, {
+      prompt: 'Detail the make up for "{{Awareness_Channel1_Audience1}}".',
+      input: {
+        variable: 'Awareness_Channel1_Audience1_Makeup'
+      }
+    }, {
+      prompt: 'What percentage of your Awareness budget will you allocate to this "{{Awareness_Channel1_Audience1}}"?',
+      input: {
+        variable: 'Awareness_Channel1_Audience1_Allocation'
+      }
+    }, {
+      prompt: 'Name your second audience for this channel.',
+      input: {
+        variable: 'Awareness_Channel1_Audience2'
+      }
+    }, {
+      prompt: 'Detail the make up for "{{Awareness_Channel1_Audience2}}".',
+      input: {
+        variable: 'Awareness_Channel1_Audience2_Makeup'
+      }
+    }, {
+      prompt: 'What percentage of your Awareness budget will you allocate to this "{{Awareness_Channel1_Audience2}}"?',
+      input: {
+        variable: 'Awareness_Channel1_Audience2_Allocation'
       }
     }]
   }

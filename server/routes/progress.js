@@ -18,9 +18,11 @@ module.exports = [{
     if (Object.keys(req.body).length > 0) {
       const [variable, value] = Object.entries(req.body)[0]
       updateProgress(progressId, variable, value)
+    } else {
+      updateProgress(progressId)
     }
 
-    const nextStep = Lists[progress.list].steps[progress.completed + 1]
+    const nextStep = Lists[progress.list].steps[progress.completed]
     if (!nextStep) return res.send(ExportView({ progressId }))
 
     const { input, prompt } = nextStep
@@ -43,10 +45,10 @@ module.exports = [{
 
     if (!keys.length) res.send()
 
-    const csv = [
-      keys.join(','),
-      Object.values(progress.input).join(',')
-    ].join('\n') + '\n'
+    const values = Object.values(progress.input).map(v => {
+      return Array.isArray(v) ? v.join('/') : v
+    })
+    const csv = [keys.join(','), values.join(',')].join('\n') + '\n'
     res.writeHead(200, {
       'Content-Type': 'application/octet-stream',
       'Content-disposition': `attachment; filename=${list.name}.csv`
