@@ -12,6 +12,9 @@ module.exports = handlebars.compile(`
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
   </head>
   <body>
+    <header>
+      <p>For demonstration purposes only</p>
+    </header>
     {{#with step}}
       <form action="/progress/{{progressId}}/next" method="post">
         <h1>{{prompt}}</h1>
