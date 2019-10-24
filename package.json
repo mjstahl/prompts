@@ -15,6 +15,9 @@
     "url": "https://github.com/mjstahl/prompts/issues"
   },
   "homepage": "https://github.com/mjstahl/prompts#readme",
+  "engines": {
+    "node": "10.16.3"
+  },
   "devDependencies": {
     "standard": "^14.3.1"
   },
